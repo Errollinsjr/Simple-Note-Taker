@@ -10,8 +10,7 @@ const path = require('path');
 
 module.exports = (app) => {
 
-    // Setup notes variable
-    fs.readFile("../Simple-Note-Taker/Develop/db/db.json", "utf8", (err, data) => {
+    fs.readFile("../Simple-Note-Taker/db/db.json", "utf8", (err, data) => {
 
         if (err) throw err;
 
@@ -32,7 +31,7 @@ module.exports = (app) => {
             let newNote = req.body;
             notes.push(newNote);
             updateDb();
-            return console.log("Added new note: "+newNote.title);
+            return console.log("New Note: " + newNote.title);
         });
 
         // Retrieves a note with specific id
@@ -45,24 +44,24 @@ module.exports = (app) => {
         app.delete("/api/notes/:id", function(req, res) {
             notes.splice(req.params.id, 1);
             updateDb();
-            console.log("Deleted note with id "+req.params.id);
+            console.log("Note with id of "+ req.params.id + " deleted");
         });
 
         // => HTML GET Requests
         // Below code handles when users "visit" a page.
         // In each of the below cases the user is shown an HTML page of content
 
-        app.get('/notes', (req, res) => {
-            res.sendFile(path.join(__dirname, '../Develop/public/notes.html'));
+        app.get('/notes', function(req,res) {
+            res.sendFile(path.join(__dirname, "../public/notes.html"));
         });
 
         // If no matching route is found default to home
-        app.get('*', (req, res) => {
-            res.sendFile(path.join(__dirname, '../Develop/public/index.html'));
+        app.get('*', function(req,res) {
+            res.sendFile(path.join(__dirname, "../public/index.html"));
         });
 
         function updateDb() {
-            fs.writeFile("../Simple-Note-Taker//Develop/db/db.json", JSON.stringify(notes,'\t'),err => {
+            fs.writeFile("../Simple-Note-Taker/db/db.json", JSON.stringify(notes,'\t'),err => {
                 if (err) throw err;
                 return true;
             });
