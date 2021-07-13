@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 7500;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
+app.use('/public', express.static(__dirname + '/public'));
 
 // ROUTER
 // The below points our server to a series of "route" files.
