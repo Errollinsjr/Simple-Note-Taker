@@ -1,6 +1,5 @@
 
 const fs = require('fs');
-const path = require('path');
 
 // DEPENDENCIES
 // We need to include the path package to get the correct file path for our html
@@ -12,7 +11,7 @@ const path = require('path');
 module.exports = (app) => {
 
     // Setup notes variable
-    fs.readFile("db/db.json","utf8", (err, data) => {
+    fs.readFile("../Simple-Note-Taker/Develop/db/db.json", "utf8", (err, data) => {
 
         if (err) throw err;
 
@@ -63,7 +62,7 @@ module.exports = (app) => {
         });
 
         function updateDb() {
-            fs.writeFile("db/db.json",JSON.stringify(notes,'\t'),err => {
+            fs.writeFile("../Simple-Note-Taker//Develop/db/db.json", JSON.stringify(notes,'\t'),err => {
                 if (err) throw err;
                 return true;
             });
