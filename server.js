@@ -22,18 +22,6 @@ app.use('/public', express.static(__dirname + '/public'));
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 require('./routes/htmlRoutes')(app);
 
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  //
-  app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname = 'client/build/index.html'));
-  })
-}
-//build mode
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
-})
-
 // LISTENER
 // The below code effectively "starts" our server
 
