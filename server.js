@@ -22,8 +22,6 @@ app.use('/public', express.static(__dirname + '/public'));
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 require('./routes/htmlRoutes')(app);
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
   //
