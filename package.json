@@ -13,7 +13,7 @@
     "start": "node app.js",
     "start:dev": "concurrently --kill-others  \"npm run client\" \"npm run server\" ",
     "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-  ,
+  },
   "author": "Edward Rollins",
   "license": "ISC",
   "dependencies": {
