@@ -10,8 +10,7 @@ const path = require('path');
 
 module.exports = (app) => {
 
-    fs.readFile("../Simple-Note-Taker/db/db.json", "utf8", (err, data) => {
-
+    fs.readFile("db/db.json", "utf8", (err, data) => {
         if (err) throw err;
 
         var notes = JSON.parse(data);
@@ -65,7 +64,7 @@ module.exports = (app) => {
         });
 
         function updateDb() {
-            fs.writeFile("../Simple-Note-Taker/db/db.json", JSON.stringify(notes,'\t'),err => {
+            fs.writeFile("db/db.json", JSON.stringify(notes,'\t'),err => {
                 if (err) throw err;
                 return true;
             });
