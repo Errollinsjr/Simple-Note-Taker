@@ -9,7 +9,7 @@ const express = require('express');
 const app = express();
 
 // Sets an initial port. We"ll use this later in our listener
-const PORT = process.env.PORT || 7500;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(express.static('public'));
